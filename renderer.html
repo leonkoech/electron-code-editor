@@ -1,0 +1,184 @@
+<html>
+     <head>
+         <meta charset="UTF=8">
+         <meta name="viewport" content="width=device-width,initial-scale=1.0">
+         <meta http-equiv="X-UA-compatible" contens='ie=edge'>
+         <title id="langtext">Simple Code Editor</title>
+     </head>
+     <style>
+         body{
+             margin:0;
+             padding:0;
+             overflow:hidden;
+         }
+         .maincontent{
+             height:100vh;
+             width:100vw;
+            background-color: rgb(35, 35, 35);
+         }
+         .container{
+             width:100%;
+             height: 100%;
+            background-color: rgb(35, 35, 35);
+         }
+      
+         h1{
+             position:absolute;
+             z-index: 1;
+             width:35%;
+            left: 50%;
+            margin-left: -17.5%;
+            top:50%;
+            height:10%;
+            margin-top: -5%;
+            text-align: center;
+            color: rgb(209, 209, 209);
+            font-weight: normal;
+            font-size: 17px;
+         }
+         i{
+             font-size: 13px;
+         }
+         .monaco-editor{
+             height:100%;
+             width:100%;
+         }
+         .moreopt{
+             width:100%;
+             padding-left:4%;
+             padding-right: 4%;
+             height:auto;
+             background-color: rgb(35, 35, 35);
+         }
+         .moreopt select,button{
+            background-color: rgb(39, 39, 39);
+            color: rgb(209, 209, 209);
+            font-size: 11px;
+            margin-left: 20px;
+            border: 0px solid white;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            padding-left: 20px;
+            padding-right: 20px;
+            margin-top:5px;
+            margin-bottom: 5px;
+         }
+         .moreopt select{
+            border:0px;
+            outline:0px;
+         }
+         .moreopt option{
+             padding-top: 5px;
+             padding-bottom: 5px;
+             border:0px;
+            outline:0px;
+         }
+         .moreopt option:hover{
+             color:rgb(35, 35, 35);
+             background-color: #f3f3f3;
+         }
+     </style>
+     <body>
+         <h1 id="warn">Please select a programming language to start<br><br><i>note: you cannot change this later.<br>In doing so, <strong>you will lose your progress</strong></i></h1>
+          <div class="moreopt">
+                 <div>
+                <select id="planguage">
+                 <option value="">select language</option>
+                 <option value="python" >python</option>
+                 <option value="javascript">javascript</option>
+                 <option value="java">java</option>
+                 <option value="c">c</option>
+                 <option value="html">html</option>
+                 <option value='css'>css</option>
+                </select>
+                 <button onclick="changelang()" type="submit">accept language</button>
+                 </div>
+             </div>
+              <div class="maincontent">
+                    <div class="container" id="containerp">
+                    </div>
+                    <div class="container" id="containerjs">
+                    </div>
+                    <div class="container" id="containerj">
+                    </div>
+                    <div class="container" id="containerd">
+                    </div>
+                    <div class="container" id="containerht">
+                    </div>
+                    <div class="container" id="containercs">
+                    </div>
+              </div>
+              
+             
+     </body>
+     <script>
+         require('./languages.js')
+     const loader = require('monaco-loader')
+        function changelang() {
+            var strlang = document.getElementById("planguage").value
+            if (strlang!=null){
+                document.getElementById("warn").style.display='none';
+                alert("you have selected "+strlang)
+                document.getElementById("langtext").innerHTML=strlang+" - simple code editor"
+                const div1 = document.getElementById('containerp')
+                const div2 = document.getElementById('containerjs')
+                const div3 = document.getElementById('containerj')
+                const div4 = document.getElementById('containerd')
+                const div5 = document.getElementById('containerht')
+                const div6 = document.getElementById('containercs')
+
+                    if(strlang=='python'){
+                        langsc(div1,strlang)
+                        display(div1,div2,div3,div4,div5,div6)
+                    }
+                    if(strlang=='javascript'){
+                        langsc(div2,strlang)
+                        display(div2,div1,div3,div4,div5,div6)
+
+                    }
+                    if(strlang=='java'){
+                        langsc(div3,strlang)
+                        display(div3,div2,div1,div4,div5,div6)
+
+                    }
+                    if(strlang=='c'){
+                        langsc(div4,strlang)
+                        display(div4,div2,div3,div1,div5,div6)
+
+                    }
+                    if(strlang=='html'){
+                        langsc(div5,strlang)
+                        display(div5,div2,div3,div4,div1,div6)
+
+                    }
+                    if(strlang=='css'){
+                        langsc(div6,strlang)
+                        display(div6,div2,div3,div4,div5,div1)
+
+                    }
+                    }
+        }
+   function langsc(div,strlang){
+    loader().then((monaco)=>{
+                    editor = monaco.editor.create(div, {
+                        language:strlang ,
+                        theme: 'vs-dark',
+                        automaticlayout: true,
+                        
+                        })
+                    })
+                    monaco.editor.colorizeElement(div)
+
+                   
+   }
+   function display(arg1,param1,param2,param3,param4,param5){
+    arg1.style.display='block';
+    param1.style.display='none';
+    param2.style.display='none';
+    param3.style.display='none';
+    param4.style.display='none';
+    param5.style.display='none';
+
+   }
+    </script>
+</html>
