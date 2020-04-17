@@ -2,6 +2,7 @@
 ![electron:8.2.2](https://img.shields.io/badge/electron-8.2.2-orange)
 ![javascript:1.7](https://img.shields.io/badge/javascript-1.7-yellow)
 ![javascript:0.20.0](https://img.shields.io/badge/monaco-0.20.0-purple)
+![version:0.0.2](https://img.shields.io/badge/version-0.0.2-black)
 
 A simple code editor made with electron.
 
@@ -47,4 +48,4 @@ If you wish to contribute make sure you read the [contribution](https://github.c
 
 ## License
 
-This Project is an under the [MIT](https://github.com/leonkoech/electron-code-editor/blob/master/license.md) license.
+This Project is an under the [MIT](https://github.com/leonkoech/electron-code-editor/blob/master/LICENSE) license.
