@@ -10,7 +10,7 @@
   "author": "leonkoech",
   "license": "MIT",
   "dependencies": {
-    "electron": "^8.2.4",
+    "electron": "^8.5.1",
     "monaco-editor": "^0.20.0",
     "monaco-loader": "^1.0.0"
   },
